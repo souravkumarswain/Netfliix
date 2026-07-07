@@ -3,6 +3,7 @@ import Header from './Header'
 import { validateData } from '../utils/validate'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../utils/firebase';
+import { useNavigate } from 'react-router';
 
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true)
@@ -11,6 +12,7 @@ const Login = () => {
   const [userName, setUserName] = useState(null)
   const [userEmail,setUserEmail] = useState(null)
   const [userPass, setUserPass] = useState(null)
+  const navigate = useNavigate()
 
   const email = useRef(null)
   const password = useRef(null)
@@ -28,6 +30,7 @@ const Login = () => {
         .then((userCredential) => {
           // Signed up 
           const user = userCredential.user;
+          navigate('/browse')
           console.log(user);
           // ...
         })
@@ -46,6 +49,7 @@ const Login = () => {
           // Signed in 
           const user = userCredential.user;
           console.log(user)
+          navigate('/browse')
           // ...
         })
         .catch((error) => {
@@ -60,7 +64,7 @@ const Login = () => {
 
   return (
     <div className='relative'>
-      <Header />
+      <Header signIn = {isSignIn} />
       <div className=''>
         <img className="" src="https://assets.nflxext.com/ffe/siteui/vlv3/81b52f88-dc76-488d-a939-0cf13a260a6e/web/IN-en-20260622-TRIFECTA-perspective_d39d60ef-cb5a-4793-9546-0a8d9a87948e_medium.jpg" alt="bg-pic" />
       </div>
