@@ -1,11 +1,18 @@
+import { signOut } from 'firebase/auth';
 import React from 'react'
 import { useNavigate } from 'react-router';
+import { auth } from '../utils/firebase';
 
 const Header = (props) => {
   const {signIn} = props;
   const navigate = useNavigate()
   const onClickButton = () => {
-    navigate('/')
+    signOut(auth).then(() => {
+  // Sign-out successful.
+   navigate('/')
+}).catch((error) => {
+  // An error happened.
+});
   }
   return (
     <div className='flex justify-between items-center absolute right-0 left-0 top-0 w-8/12 mx-auto'>
