@@ -30,8 +30,6 @@ const Login = () => {
         .then((userCredential) => {
           // Signed up 
           const user = userCredential.user;
-          navigate('/browse')
-          console.log(user);
           // ...
         })
         .catch((error) => {
@@ -48,8 +46,6 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in 
           const user = userCredential.user;
-          console.log(user)
-          navigate('/browse')
           // ...
         })
         .catch((error) => {
