@@ -35,11 +35,11 @@ const Header = (props) => {
     });
   }
   return (
-    <div className='flex justify-between items-center absolute right-0 left-0 top-0 w-8/12 mx-auto'>
-      <div className='bg-slate-900 opacity-80 rounded'>
+    <div className='flex justify-between items-center absolute right-0 left-0 top-0 w-full mx-auto bg-linear-to-b from-black text-white p-2'>
+      <div className=' rounded ml-20'>
         <img className="w-44" src={NETFLIX_LOGO} alt='product-logo' />
       </div>
-      <div className='flex items-center gap-4'>
+      <div className='flex items-center gap-4 mr-20'>
         {user &&  <div className='flex items-center'>
           <img className="w-10" src={user?.photoURL} alt="ueser_profile_pic" />
           <p className='ml-2'>Welcome back <br/>{user?.displayName}</p>
