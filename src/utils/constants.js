@@ -8,4 +8,5 @@ export const API_CONSTANTS = {
     Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNjNjM2FmMDJhMGU0YzU0NjZiYzg5NzkwMjRlNjg4MCIsIm5iZiI6MTc4MzU2NTYwMi4yMTksInN1YiI6IjZhNGYwZDIyMDlkYzgzNjIzYWEwYTNiYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.siw4lKqGMtXag-h15LXr3aVu7ZQ4-KEHV4grZjg58Ro'
   }
 };
-export const PLAY_ICON = 'https://cdn-icons-png.flaticon.com/512/109/109197.png'
+export const PLAY_ICON = 'https://cdn-icons-png.flaticon.com/512/109/109197.png';
+export const MOVIE_POSTER_URL = 'https://image.tmdb.org/t/p/w500'

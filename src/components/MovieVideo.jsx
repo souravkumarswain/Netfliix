@@ -11,7 +11,7 @@ function MovieVideo({ movieId }) {
   const videoKey = videoData?.key
   // console.log(videoData?.key)
   return (
-    <div>
+    <div className='scrollbar-none'>
       <iframe
         className='w-screen aspect-video'
         src={"https://www.youtube.com/embed/" + videoKey + "?&autoplay=1&mute=1"}
