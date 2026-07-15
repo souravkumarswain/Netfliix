@@ -6,18 +6,22 @@ import SecondaryContainer from './SecondaryContainer';
 import usePopularMovies from '../hooks/usePopularMovies';
 import useTopRatedMovies from '../hooks/useTopRatedMovies';
 import useUpcomingMovies from '../hooks/useUpcomingMovies';
+import { useSelector } from 'react-redux';
+import GPTContainer from './GPTContainer';
 
 const Browse = () => {
  useNowPlayingMovies()
  usePopularMovies()
  useTopRatedMovies()
  useUpcomingMovies()
+ const gptSearch = useSelector(store=> store.gptData.showGptSearch)
   return (
     <div className="flex flex-col">
-      <div>
+      {gptSearch ? <GPTContainer/> :<div>
         <MainContainer/>
         <SecondaryContainer/>
-      </div>
+      </div>}
+      
       <Header/>
     </div>
     

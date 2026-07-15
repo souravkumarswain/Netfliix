@@ -5,6 +5,7 @@ import { auth } from '../utils/firebase';
 import { useDispatch, useSelector } from 'react-redux';
 import { addUser, removeUser } from '../utils/userSlice';
 import { NETFLIX_LOGO } from '../utils/constants';
+import { toggleSearchMovies } from '../utils/GPTSlice';
 
 const Header = (props) => {
   const { signIn } = props;
@@ -34,6 +35,10 @@ const Header = (props) => {
       // An error happened.
     });
   }
+
+  const onClickGPTSearch = () => {
+    dispatch(toggleSearchMovies())
+  }
   return (
     <div className='flex justify-between items-center absolute right-0 left-0 top-0 w-full mx-auto bg-linear-to-b from-black text-white p-2'>
       <div className=' rounded ml-20'>
@@ -44,6 +49,9 @@ const Header = (props) => {
           <img className="w-10" src={user?.photoURL} alt="ueser_profile_pic" />
           <p className='ml-2'>Welcome back <br/>{user?.displayName}</p>
         </div>}
+        {
+          !signIn ? <div><button onClick = {onClickGPTSearch} className=' bg-purple-800 text-white font-bold py-2 px-4 rounded hover:cursor-pointer'>GPT Search</button></div> : null
+        }
         <button onClick={onClickButton} className=' mr-4 bg-red-700 text-white font-bold py-2 px-4 rounded hover:cursor-pointer'>{signIn ? 'Sign In' : 'Sign Out'}</button>
       </div>
     </div>
