@@ -4,7 +4,7 @@ import GPTMovieSuggestion from './GPTMovieSuggestion'
 
 function GPTContainer() {
   return (
-    <div>
+    <div className='flex flex-col bg-black'>
         <GPTSearchBar/>
         <GPTMovieSuggestion/>
     </div>

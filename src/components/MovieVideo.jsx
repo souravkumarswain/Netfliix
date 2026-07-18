@@ -9,7 +9,6 @@ function MovieVideo({ movieId }) {
   useMovieTrailer(movieId);
   const videoData = useSelector((store)=>store.movies?.nowPlayingMoviesTrailer)
   const videoKey = videoData?.key
-  // console.log(videoData?.key)
   return (
     <div className='scrollbar-none'>
       <iframe

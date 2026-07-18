@@ -3,6 +3,7 @@ import { MOVIE_POSTER_URL } from '../utils/constants'
 
 function MovieCard({movie}) {
     const {poster_path} = movie
+    if(!poster_path) return null
   return (
     <div className='mr-2 w-40'>
         <img className='' src={MOVIE_POSTER_URL+poster_path} alt = "movie_poster"/>
