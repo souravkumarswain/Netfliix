@@ -13,6 +13,8 @@ const Header = (props) => {
   const dispatch = useDispatch()
   const user = useSelector((store) => store.user)
 
+  const showGPTButton = useSelector(store => store.gptData.showGptSearch)
+
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -50,7 +52,9 @@ const Header = (props) => {
           <p className='ml-2'>Welcome back <br/>{user?.displayName}</p>
         </div>}
         {
-          !signIn ? <div><button onClick = {onClickGPTSearch} className=' bg-purple-800 text-white font-bold py-2 px-4 rounded hover:cursor-pointer'>GPT Search</button></div> : null
+          !signIn ? <button onClick = {onClickGPTSearch} className=' bg-purple-800 text-white font-bold py-2 px-4 rounded hover:cursor-pointer'>
+            {showGPTButton ? 'Home Page' : 'GPT Search'}
+          </button> : null
         }
         <button onClick={onClickButton} className=' mr-4 bg-red-700 text-white font-bold py-2 px-4 rounded hover:cursor-pointer'>{signIn ? 'Sign In' : 'Sign Out'}</button>
       </div>
