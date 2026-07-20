@@ -8,7 +8,7 @@ export const API_CONSTANTS = {
   method: 'GET',
   headers: {
     accept: 'application/json',
-    Authorization: 'Bearer'+TMDB_API_KEY
+    Authorization: 'Bearer '+TMDB_API_KEY
   }
 };
 export const PLAY_ICON = 'https://cdn-icons-png.flaticon.com/512/109/109197.png';

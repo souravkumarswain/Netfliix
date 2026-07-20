@@ -19,11 +19,11 @@ function GPTSearchBar() {
 
     const onClickSearch = async() => {
         let inputText = textSearched.current.value;
+        setShowShimmer(true);
         const interaction = await ai.interactions.create({
             model: "gemini-3.5-flash",
-            input: "act like a movie recomendation system which only takes input of user and suggest 5 movie names comma separated. suggest movie by taking consideartion the genere , type, region:"+{inputText}+"ex:movie1, movie 2, movie 3, movie 4, movie 5",
+            input: "act like a movie recomendation system which only takes input of user and suggest 5 movie names comma separated. suggest movies according to the requirement after colon:"+{inputText}+"ex:movie1, movie 2, movie 3, movie 4, movie 5",
         });
-        setShowShimmer(!showShimmer)
         //storing search results in array
         const aiSearchResults = interaction.output_text.split(',')
         //search these results in TMDB Db and get results from API call
@@ -31,6 +31,7 @@ function GPTSearchBar() {
         //resolve all promise
         const TMDBResults = await Promise.all(TMDBPromiseResults)
         dispatch(addAiSearchedMovieResults({aiMovieSuggestions:aiSearchResults,aiSearchedMovies:TMDBResults}));
+        setShowShimmer(false);
     }
     return (
         <div className='flex flex-col items-center justify-between'>
