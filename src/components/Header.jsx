@@ -1,11 +1,12 @@
 import { onAuthStateChanged, signOut } from 'firebase/auth';
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { useNavigate } from 'react-router';
 import { auth } from '../utils/firebase';
 import { useDispatch, useSelector } from 'react-redux';
 import { addUser, removeUser } from '../utils/userSlice';
-import { NETFLIX_LOGO } from '../utils/constants';
+import { NETFLIX_LOGO, SET_OF_LANG } from '../utils/constants';
 import { toggleSearchMovies } from '../utils/GPTSlice';
+import { addLangChange } from '../utils/langSlice';
 
 const Header = (props) => {
   const { signIn } = props;
@@ -13,7 +14,7 @@ const Header = (props) => {
   const dispatch = useDispatch()
   const user = useSelector((store) => store.user)
 
-  const showGPTButton = useSelector(store => store.gptData.showGptSearch)
+  const showGPTPage = useSelector(store => store.gptData.showGptSearch)
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (user) => {
@@ -41,6 +42,9 @@ const Header = (props) => {
   const onClickGPTSearch = () => {
     dispatch(toggleSearchMovies())
   }
+  const onSelectLang = (e) => {
+    dispatch(addLangChange(e.target.value))
+  }
   return (
     <div className='flex justify-between items-center absolute right-0 left-0 top-0 w-full mx-auto bg-linear-to-b from-black text-white p-2'>
       <div className=' rounded ml-20'>
@@ -53,10 +57,15 @@ const Header = (props) => {
         </div>}
         {
           !signIn ? <button onClick = {onClickGPTSearch} className=' bg-purple-800 text-white font-bold py-2 px-4 rounded hover:cursor-pointer'>
-            {showGPTButton ? 'Home Page' : 'GPT Search'}
+            {showGPTPage ? 'Home Page' : 'GPT Search'}
           </button> : null
         }
         <button onClick={onClickButton} className=' mr-4 bg-red-700 text-white font-bold py-2 px-4 rounded hover:cursor-pointer'>{signIn ? 'Sign In' : 'Sign Out'}</button>
+        {
+          showGPTPage && <select className='text-white bg-red-700 px-2 py-2 rounded' onChange={onSelectLang}>
+          {SET_OF_LANG.map(eachLang => <option value = {eachLang.value}>{eachLang.name}</option>)}
+        </select>
+        }
       </div>
     </div>
   )

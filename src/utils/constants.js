@@ -14,3 +14,4 @@ export const API_CONSTANTS = {
 export const PLAY_ICON = 'https://cdn-icons-png.flaticon.com/512/109/109197.png';
 export const MOVIE_POSTER_URL = 'https://image.tmdb.org/t/p/w500';
 export const GEMINI_API_KEY= API_KEY;
+export const SET_OF_LANG = [{value:'enUS',name:'English'},{value:'hiIN',name:'Hindi'},{value:'ruRU',name:'Russian'}]
